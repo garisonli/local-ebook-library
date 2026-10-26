@@ -1,0 +1,17 @@
+Warning: Cannot polyfill `DOMMatrix`, rendering may be broken: "Error: Cannot find module '../build/Release/canvas.node'
+Require stack:
+- E:\agnes workspace\ebook-library\node_modules\canvas\lib\bindings.js
+- E:\agnes workspace\ebook-library\node_modules\canvas\lib\canvas.js
+- E:\agnes workspace\ebook-library\node_modules\canvas\index.js
+- E:\agnes workspace\ebook-library\node_modules\pdfjs-dist\legacy\build\pdf.js
+- E:\agnes workspace\ebook-library\[eval]".
+Warning: Cannot polyfill `Path2D`, rendering may be broken: "Error: Cannot find module '../build/Release/canvas.node'
+Require stack:
+- E:\agnes workspace\ebook-library\node_modules\canvas\lib\bindings.js
+- E:\agnes workspace\ebook-library\node_modules\canvas\lib\canvas.js
+- E:\agnes workspace\ebook-library\node_modules\canvas\index.js
+- E:\agnes workspace\ebook-library\node_modules\pdfjs-dist\legacy\build\pdf.js
+- E:\agnes workspace\ebook-library\[eval]".
+path: E:\伴读学习\电子书\通识常识\《说文解字》精读 (殷寄明) (Z-Library).pdf
+pages=286 textLen=0 fnArray=5
+vp=1417.3228x1958.2676

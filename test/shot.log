@@ -1,0 +1,108 @@
+
+> local-ebook-library@1.0.0 start
+> electron .
+
+
+Warning: Cannot polyfill `DOMMatrix`, rendering may be broken: "Error: Cannot find module '../build/Release/canvas.node'
+Require stack:
+- E:\agnes workspace\ebook-library\node_modules\canvas\lib\bindings.js
+- E:\agnes workspace\ebook-library\node_modules\canvas\lib\canvas.js
+- E:\agnes workspace\ebook-library\node_modules\canvas\index.js
+- E:\agnes workspace\ebook-library\node_modules\pdfjs-dist\legacy\build\pdf.js
+- E:\agnes workspace\ebook-library\lib\pdf-meta.js
+- E:\agnes workspace\ebook-library\lib\extract.js
+- E:\agnes workspace\ebook-library\main.js".
+Warning: Cannot polyfill `Path2D`, rendering may be broken: "Error: Cannot find module '../build/Release/canvas.node'
+Require stack:
+- E:\agnes workspace\ebook-library\node_modules\canvas\lib\bindings.js
+- E:\agnes workspace\ebook-library\node_modules\canvas\lib\canvas.js
+- E:\agnes workspace\ebook-library\node_modules\canvas\index.js
+- E:\agnes workspace\ebook-library\node_modules\pdfjs-dist\legacy\build\pdf.js
+- E:\agnes workspace\ebook-library\lib\pdf-meta.js
+- E:\agnes workspace\ebook-library\lib\extract.js
+- E:\agnes workspace\ebook-library\main.js".
+[boot] db ready, settings = {"root":"E:\\伴读学习\\电子书","perPage":16}
+[boot] auto scan scheduled
+[scan] done {"ok":true,"added":0,"updated":0,"removed":0,"total":5117}
+[cover] queue start, candidates = 26
+[cover] snapshot window ready
+[snapshot] send render, type= pdf
+[snapshot] send render, type= epub
+[snapshot] render error: No RootFile Found
+[cover] rebuild snapshot window after fail: 《于丹：读论语，品庄子[精品]》.epub
+[snapshot] send render, type= pdf
+[snapshot] render error: No password given
+[cover] rebuild snapshot window after fail: 《八阵总述》.pdf
+[snapshot] send render, type= epub
+[snapshot] render error: Corrupted zip: can't find end of central directory
+[cover] rebuild snapshot window after fail: 《科学美国人》精选系列·从星系到量子——物质世界探奇（套装共10册）... (《环球科学》杂志社,外研社科学出版工作室 [《环球科学》杂志社,外研... (Z-Library).epub
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 中国十大权贵家族 (马开龄) (Z-Library).pdf
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 你不必是一朵花：我的外婆，从不内耗 (理微尘) (Z-Library).pdf
+[snapshot] send render, type= epub
+[snapshot] render error: File not found in the epub: /item/standard.opf
+[cover] rebuild snapshot window after fail: 你為何而活 The Purpose In Your Life (林孟儒 Monroe) (Z-Library).epub
+[snapshot] send render, type= epub
+[snapshot] render error: Corrupted zip: can't find end of central directory
+[cover] rebuild snapshot window after fail: 反内耗解压笔记：68种写作练习，摆脱精神内耗 (柳柳) (Z-Library).epub
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 呼吸，为了疗愈：全新的呼吸科学与医学 (杨定一) (Z-Library).pdf
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 增订真气运行法 (李少波) (Z-Library).pdf
+[snapshot] send render, type= epub
+[snapshot] render error: Corrupted zip: can't find end of central directory
+[cover] rebuild snapshot window after fail: 外研社双语读库：西方文学社科经典大套装（套装194本） ( etc.) (Z-Library).epub
+[snapshot] send render, type= epub
+[snapshot] render error: Corrupted zip: can't find end of central directory
+[cover] rebuild snapshot window after fail: 好用的职场指南系列套装（10册）（带你用远见思维规划职业生涯的三大阶段,向浮躁的职场观宣战，为你提供无价的职业建议,送给每个人的卓越人生... (Z-Library).epub
+[snapshot] send render, type= epub
+[snapshot] render error: Corrupted zip: can't find end of central directory
+[cover] rebuild snapshot window after fail: 懂用錢，愈活愈富有：全球9,000萬人見證有效，理財武士教你做出致富決策，FIRE不上班超過十年，被動收入年領30萬美元 = Buy This, Not That How to Spend Your... (Z-Library).epub
+[snapshot] send render, type= pdf
+[snapshot] render error: Unexpected server response (500) while retrieving PDF "elocal://f/E:/%E4%BC%B4%E8%AF%BB%E5%AD%A6%E4%B9%A0/%E7%94%B5%E5%AD%90%E4%B9%A6/%E7%A4%BE%E4%BC%9A%E5%AE%B6%E5%BA%AD/%E6%95%99%E8%82%B2%E8%82%B2%E5%84%BF/[%E6%8F%90%E9%AB%98%E6%88%90%E7%BB%A9%EF%BC%8C90%%E9%9D%A0%E8%AE%B0%E5%BF%86].%E6%96%B0%E6%95%99%E8%82%B2%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E6%9C%BA%E6%9E%84.%E6%89%AB%E6%8F%8F%E7%89%88[%E6%88%91%E7%9A%84%E6%89%93%E5%8C%85%E5%88%86%E4%BA%ABmydbfx.com].pdf".
+[cover] rebuild snapshot window after fail: [提高成绩，90%靠记忆].新教育学习研究机构.扫描版[我的打包分享mydbfx.com].pdf
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 撒下好运的种子 (徐浩渊著, 徐浩渊, 1949-, 徐浩渊著, 徐浩渊) (Z-Library).pdf
+[snapshot] send render, type= epub
+[snapshot] render error: Corrupted zip: can't find end of central directory
+[cover] rebuild snapshot window after fail: 最強網路交友聊天術：這樣「寫」，沒有約不到的人 (白鳥麻紀) (Z-Library).epub
+[snapshot] send render, type= epub
+[snapshot] render error: Corrupted zip or bug: unexpected signature (\xB8\x80\x8F\x40, expected \x50\x4B\x03\x04)
+[cover] rebuild snapshot window after fail: 本草纲目(白话手绘彩图典藏本) - 李时珍.epub
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 極致愛撫１：胸部特集 (辰見拓郎, 三井京子) (Z-Library).pdf
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 死后的世界 生命不息 (（美）雷蒙德·穆迪（Raymond A.Moody）著) (Z-Library).pdf
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 真需求.pdf
+[snapshot] send render, type= epub
+[snapshot] render error: Corrupted zip: can't find end of central directory
+[cover] rebuild snapshot window after fail: 科学最前沿·第一辑 (《科学美国人》精选系列·科学最前沿) (《环球科学》杂志社  外研社科学出版工作室 [《环球科学》杂志社]) (Z-Library).epub
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 臣服实验 (迈克.A辛格) (Z-Library).pdf
+[shot] main = true
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 重新养自己一遍（共四册） (毛冷瞪) (Z-Library).pdf
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 阴阳双修房中秘笈（第三卷·经典篇） (无形道人) (Z-Library).pdf
+[shot] main-bottom = true
+[shot] reader open {"ok":true}
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 阴阳双修房中秘笈（第四卷·集萃篇） (无形道人) (Z-Library).pdf
+[snapshot] send render, type= pdf
+[snapshot] render error: Invalid PDF structure.
+[cover] rebuild snapshot window after fail: 鴛鴦秘譜 (唐寅) (Z-Library).pdf
+[shot] reader = true

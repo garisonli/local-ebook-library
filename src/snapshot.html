@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' elocal: data: blob:; script-src 'self' 'unsafe-inline' elocal: blob:; worker-src 'self' blob: elocal:; style-src 'self' 'unsafe-inline' elocal:; img-src 'self' elocal: data: blob:; font-src 'self' elocal: data:; connect-src 'self' elocal: data: blob:;">
+  <title>snapshot</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 480px; height: 640px; overflow: hidden; background: #fff; }
+    #page {
+      width: 480px; height: 640px; background: #fff; position: relative;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    #canvasBox { display: none; }
+    #canvasBox canvas { max-width: 456px; max-height: 616px; display: block; }
+    #epubBox { display: none; width: 456px; height: 616px; }
+    #htmlBox, #textBox {
+      display: none; width: 456px; height: 616px; overflow: hidden;
+      padding: 24px 22px; color: #222; background: #fff;
+    }
+    #htmlBox { line-height: 1.75; font-size: 16px; }
+    #htmlBox img { max-width: 100%; height: auto; }
+    #htmlBox h1, #htmlBox h2, #htmlBox h3 { font-size: 19px; margin: 10px 0 8px; }
+    #htmlBox p { margin: 0 0 10px; text-indent: 2em; }
+    #textBox {
+      font-family: "Microsoft YaHei", "PingFang SC", serif;
+      font-size: 15.5px; line-height: 2; white-space: pre-wrap; text-indent: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="canvasBox"><canvas id="cv"></canvas></div>
+    <div id="epubBox"></div>
+    <div id="htmlBox"></div>
+    <div id="textBox"></div>
+  </div>
+  <script src="snapshot.js"></script>
+</body>
+</html>

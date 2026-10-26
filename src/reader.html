@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' elocal: data: blob:; script-src 'self' 'unsafe-inline' elocal: blob:; worker-src 'self' blob: elocal:; style-src 'self' 'unsafe-inline' elocal:; img-src 'self' elocal: data: blob:; font-src 'self' elocal: data:; connect-src 'self' elocal: data: blob:;">
+  <title>阅读器</title>
+  <link rel="stylesheet" href="reader.css">
+</head>
+<body>
+  <header class="r-top">
+    <button id="btnClose" class="r-btn close" title="关闭（自动保存进度）">✕</button>
+    <div class="r-title">
+      <span id="rTitle">…</span>
+      <span id="rAuthor"></span>
+    </div>
+    <div class="r-nav">
+      <button id="btnPrev" class="r-btn" title="上一页（←）">‹</button>
+      <input id="pageInput" type="text" title="页码 / 跳转">
+      <span id="pageTotal">–</span>
+      <button id="btnNext" class="r-btn" title="下一页（→）">›</button>
+    </div>
+    <div class="r-tools">
+      <button id="fontMinus" class="r-btn" title="缩小字号">A−</button>
+      <button id="fontPlus" class="r-btn" title="增大字号">A＋</button>
+      <button id="btnTheme" class="r-btn" title="白天 / 夜间">🌙</button>
+      <button id="btnSide" class="r-btn" title="目录与书签">☰ 目录</button>
+      <span id="progText" class="prog-text">0%</span>
+    </div>
+  </header>
+
+  <div class="r-body">
+    <aside class="r-side" id="side">
+      <div class="side-tabs">
+        <button class="on" data-tab="toc">目录</button>
+        <button data-tab="bm">书签</button>
+      </div>
+      <div class="side-list" id="tocList"><div class="hint">暂无目录</div></div>
+      <div class="side-list" id="bmList" hidden><div class="hint">还没有书签</div></div>
+      <div class="side-foot">
+        <button id="btnAddBm" class="bm-add">＋ 添加当前书签</button>
+      </div>
+    </aside>
+
+    <main class="r-main" id="rMain">
+      <div id="epubView" class="view" hidden></div>
+      <div id="pdfView" class="view" hidden><canvas id="pdfCanvas"></canvas></div>
+      <div id="colWrap" class="view" hidden><div id="stage"><div id="flow"></div></div></div>
+      <div id="rLoading">正在打开书籍…</div>
+    </main>
+  </div>
+
+  <div class="r-progress"><div id="progFill"></div></div>
+
+  <script src="reader.js"></script>
+</body>
+</html>

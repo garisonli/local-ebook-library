@@ -1,0 +1,20 @@
+{
+  "name": "local-ebook-library",
+  "version": "1.0.0",
+  "description": "本地电子书图书馆（EPUB/PDF/MOBI/TXT/AZW3）",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "epubjs": "^0.3.93",
+    "jszip": "^3.10.1",
+    "pdfjs-dist": "^3.11.174",
+    "sql.js": "^1.10.3"
+  },
+  "devDependencies": {
+    "electron": "^28.3.3"
+  }
+}

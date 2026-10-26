@@ -1,0 +1,15 @@
+node_modules/
+.agnes/
+test/tmp-books/
+test/tmp-covers/
+test/tmp-covers2/
+test/tmp-userdata/
+test/db-out.txt
+test/scan-log.txt
+test/pager-log.txt
+test/mobi-diag-out.txt
+test/run-*.log
+test/shot-*.log
+test/fail-pdfs.txt
+test/small-covers.txt
+test/*.png

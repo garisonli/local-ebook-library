@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+<script>
+const ROOT = 'E:\\agnes workspace\\ebook-library\\test\\tmp-books';
+function u(p){ return 'elocal://f/' + p.replace(/\\/g,'/'); }
+async function t(name, url){
+  try {
+    const r = await fetch(url);
+    const buf = await r.arrayBuffer();
+    console.log(name, '=> status', r.status, 'bytes', buf.byteLength);
+  } catch(e) { console.log(name, '=> FETCH ERROR:', String(e)); }
+}
+(async () => {
+  console.log('start');
+  await t('TXT', u(ROOT + '\\小说\\测试书籍.txt'));
+  await t('EPUB', u(ROOT + '\\技术\\测试EPUB.epub'));
+
+  // XHR 测试（epub.js 实际使用的请求方式）
+  await new Promise((resolve) => {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        console.log('XHR => status', xhr.status, 'type', typeof xhr.response, 'bytes', xhr.response ? (xhr.response.byteLength || String(xhr.response).length) : 0);
+        resolve();
+      }
+    };
+    xhr.onerror = () => { console.log('XHR => ERROR event, status', xhr.status); resolve(); };
+    xhr.open('GET', u(ROOT + '\\技术\\测试EPUB.epub'));
+    xhr.responseType = 'arraybuffer';
+    xhr.send();
+  });
+  console.log('done');
+})();
+</script>
+</head>
+<body>test</body>
+</html>

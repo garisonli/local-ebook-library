@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' elocal: data:; script-src 'self' 'unsafe-inline' elocal:; style-src 'self' 'unsafe-inline' elocal:; img-src 'self' elocal: data:; font-src 'self' elocal: data:; connect-src 'self' elocal:;">
+  <title>图书馆</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">📚</span>
+      <h1 id="libName">我的图书馆</h1>
+    </div>
+    <div class="search-box">
+      <span class="search-ico">🔍</span>
+      <input id="searchInput" type="text" placeholder="搜索书名、作者…" autocomplete="off">
+      <button id="searchClear" class="search-clear" hidden>✕</button>
+    </div>
+    <div class="top-actions">
+      <button id="btnRefresh" class="btn-icon" title="刷新扫描">⟳</button>
+      <button id="btnSettings" class="btn-primary">⚙ 设置</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- 左侧分类 -->
+    <aside class="sidebar">
+      <section class="side-section">
+        <div class="side-title">文件分类<span class="tree-tools"><a id="treeExpandAll" title="展开所有文件夹">展开</a><a id="treeCollapseAll" title="收起所有文件夹">收起</a></span></div>
+        <div id="tree" class="tree"></div>
+      </section>
+      <section class="side-section">
+        <div class="side-title">标签分类</div>
+        <div class="tag-chips" id="tagChips">
+          <button class="chip active" data-status="">🏷 全部</button>
+          <button class="chip" data-status="未读">未读</button>
+          <button class="chip" data-status="在读">在读</button>
+          <button class="chip" data-status="已读">✓ 已读</button>
+        </div>
+      </section>
+      <section class="side-section">
+        <div class="side-title">快捷操作</div>
+        <button class="side-link" id="btnStats">📊 阅读统计</button>
+        <button class="side-link" id="btnRevealRoot">📁 打开书籍文件夹</button>
+      </section>
+      <div class="side-foot" id="sideFoot"></div>
+    </aside>
+
+    <!-- 中部封面网格 -->
+    <main class="content">
+      <div class="content-head">
+        <h2 id="listTitle">全部书籍</h2>
+        <div id="scanStatus" class="scan-status" hidden></div>
+      </div>
+      <div id="grid" class="grid"></div>
+      <div id="emptyState" class="empty" hidden>
+        <div class="empty-ico">📖</div>
+        <div id="emptyText">还没有书籍</div>
+        <button id="btnEmptyScan" class="btn-primary" hidden>开始扫描</button>
+      </div>
+      <div class="pager" id="pager" hidden>
+        <button id="prevPage">上一页</button>
+        <label class="page-jump">第 <input id="pageJump" type="number" min="1" step="1"> 页 / <span id="pageTotal">1</span></label>
+        <span id="pageInfo"></span>
+        <button id="nextPage">下一页</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- 书籍详情弹窗 -->
+  <div class="modal-mask" id="modalDetail" hidden>
+    <div class="modal detail-modal">
+      <div class="modal-head"><h3>书籍详情</h3></div>
+      <div class="detail-body">
+        <div class="detail-cover"><img id="dCover" alt=""><div class="cover-ph" id="dCoverPh">📖</div></div>
+        <div class="detail-title" id="dTitle"></div>
+        <div class="detail-author" id="dAuthor"></div>
+        <div class="detail-desc" id="dDesc"></div>
+        <div class="detail-meta">
+          <span id="dFormat"></span><span id="dPath"></span>
+        </div>
+        <div class="detail-status">
+          <label>阅读状态：</label>
+          <button class="st-btn" data-st="未读">未读</button>
+          <button class="st-btn" data-st="在读">在读</button>
+          <button class="st-btn" data-st="已读">已读</button>
+          <span class="detail-progress" id="dProgress"></span>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button id="dOpen" class="btn-primary">打开书籍</button>
+        <button id="dMove" class="btn-outline">移动到…</button>
+        <button id="dReveal" class="btn-outline" title="在文件夹中显示">所在位置</button>
+        <button id="dDelete" class="btn-danger">删除</button>
+        <button id="dClose" class="btn-outline">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 设置弹窗 -->
+  <div class="modal-mask" id="modalSettings" hidden>
+    <div class="modal settings-modal">
+      <div class="modal-head"><h3>设置</h3></div>
+      <div class="form-row">
+        <label>图书馆名称</label>
+        <input id="setName" type="text" maxlength="30" placeholder="例如：我的图书馆">
+      </div>
+      <div class="form-row">
+        <label>本地图书加载文件夹根目录</label>
+        <div class="folder-row">
+          <input id="setDir" type="text" readonly placeholder="请选择文件夹">
+          <button id="btnPickDir" class="btn-outline">选择…</button>
+        </div>
+        <div class="form-hint">左侧分类将根据该文件夹下的子目录自动生成；搜索范围也是它。</div>
+      </div>
+      <div class="form-row">
+        <label>每页显示书籍数量</label>
+        <input id="setPerPage" type="number" min="4" max="200" step="1">
+      </div>
+      <div class="modal-foot">
+        <button id="setSave" class="btn-primary">保存</button>
+        <button id="setClose" class="btn-outline">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 阅读统计弹窗 -->
+  <div class="modal-mask" id="modalStats" hidden>
+    <div class="modal stats-modal">
+      <div class="modal-head"><h3>阅读统计</h3></div>
+      <div class="stats-grid" id="statsGrid"></div>
+      <div class="side-title" style="margin-top:14px">最近阅读</div>
+      <div class="recent-list" id="recentList"></div>
+      <div class="modal-foot">
+        <button id="statsClose" class="btn-outline">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 移动到…弹窗 -->
+  <div class="modal-mask" id="modalMove" hidden>
+    <div class="modal move-modal">
+      <div class="modal-head"><h3>移动到…</h3></div>
+      <div class="form-row">
+        <label>目标文件夹</label>
+        <select id="moveSel" size="8" class="dir-select"></select>
+      </div>
+      <div class="form-row">
+        <button id="moveBrowse" class="btn-outline">浏览其它文件夹…</button>
+        <span class="form-hint" id="moveHint"></span>
+      </div>
+      <div class="modal-foot">
+        <button id="moveOk" class="btn-primary">移动</button>
+        <button id="moveClose" class="btn-outline">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 首次启动：设置文件夹引导 -->
+  <div class="modal-mask" id="setupOverlay" hidden>
+    <div class="modal setup-modal">
+      <div class="modal-head"><h3>欢迎使用图书馆</h3></div>
+      <div class="form-row">
+        <label>图书馆名称</label>
+        <input id="setupName" type="text" maxlength="30" placeholder="例如：牛爸的图书馆">
+      </div>
+      <div class="form-row">
+        <label>选择本地图书所在的文件夹</label>
+        <div class="folder-row">
+          <input id="setupDir" type="text" readonly placeholder="未选择">
+          <button id="setupPick" class="btn-outline">选择…</button>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button id="setupGo" class="btn-primary">开始使用</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
